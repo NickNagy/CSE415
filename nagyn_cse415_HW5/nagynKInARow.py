@@ -134,6 +134,7 @@ def segment_eval(segment, side):
             sum += 1
     return sum
 
+
 # evaluates every diagonal in the board
 # for each diagonal, sums my_side pieces - opponent_side pieces, then signed & squared
 # returns a sum of all diagonal evaluations
@@ -283,6 +284,6 @@ def remarks(currentRemark, state):
         return "Well, I guess I'll start things off! Won't make a difference who does!"
     # likely loss
     if staticEval(state) < 0:
-        return "Hm... looks like you're getting lucky, " + opponent_name 
-                + "... obviously this won't happen again, so enjoy."
+        return "Hm... looks like you're getting lucky, " + \
+               opponent_name + "... obviously this won't happen again, so enjoy."
     return "Cute, " + opponent_name + "... but check THIS out."
