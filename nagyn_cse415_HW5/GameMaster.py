@@ -5,7 +5,7 @@
 USE_HTML = True
 
 import nagynKInARow as player1
-import danc88KInARow as player2
+import nagynKInARow as player2
 from winTesterForK import winTesterForK
 
 if USE_HTML: import gameToHTML
