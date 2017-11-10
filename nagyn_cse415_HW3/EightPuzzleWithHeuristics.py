@@ -99,7 +99,7 @@ def goal_message(s):
 def goal_test(s):
     return s.__eq__(State([0, 1, 2, 3, 4, 5, 6, 7, 8]))
 
-
+# INCORRECT IMPLEMENTATION -> to be fixed
 def h_euclidean(s):
     # calculates the euclidean distance from each index in s to its goal state index
     # returns a sum of all these calculations
