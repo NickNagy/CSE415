@@ -1,0 +1,65 @@
+Nick Nagy
+1564777
+
+1. Tic-Tac-Toe:
+
+Ignoring repeated states:
+	After 7 moves: N = 9*8*7*6*5*4*3 = 181,440
+
+After 3 moves, each state can be reached in 2 ways (2!)(1)
+After 4 moves, each state can be reached in 4 ways (2!2!)
+After 5 moves, each state can be reached in 12 ways (3!2!)
+After 6 moves, each state can be reached in 36 ways (3!3!)
+After 7 moves, each state can be reached in 144 ways (4!3!) <-- includes all repeated states after 3 moves, 4 moves, etc...
+
+	181,440 / 144 = 1,260 distinct states after 7 moves
+
+2. Tric-Tac-Toe:
+
+1st:
+	X: 4*4*4 = 64 possible places
+	Y: 63 possible places
+	Z: 62 possible places
+	X: 61 possible places
+	Y: 60 possible places
+	Z: 59 possible places
+
+	8 possible ways to reach same state after 6 moves (2!2!2!)
+
+	(64*61)*(63*60)*(62*59) / 8 = 6,747,693,000 distinct states after 6 moves
+
+3. Husky Paperweights
+	Number of possible states (ignoring duplicates) = 2^(n*n) <-- each space has 2 possible colors
+
+	For 1x1:
+	Number of 90-degree symmetry states = 2*1
+	Number of only 180-degree symmetry states = 0
+
+	For 3x3:
+	horizontal & vertical rows = 3
+	diagonals = 5
+	
+	Number of 90-degree symmetry states = 2*4 = 8
+	Number of only 180-degree symmetry states = 2*8 = 16
+	
+	For 5x5:
+	horizontal & vertical rows = 5
+	diagonals = 9
+
+	Number of 90-degree symmetry states = 2*16 = 32
+
+	For 7x7:
+	horizontal & vertical rows = 7
+	diagonals = 13
+
+	For n*n:
+	horizontal & vertical rows = n
+	diagonals = 2*n - 1
+
+	Number of 90-degree symmetry states = 2^n
+	Number of 180-degree symmetry states (including 90-degree) = 2^n / 2 = 2^(n-1)
+
+	Subtracting half of the 180-degree symmetries and 3/4 of the 90-degree symmetries yields:
+
+	Total number of distinct patterns = 2^(n*n) - (3/4)(2^n) - 2^(n-2)
+	
