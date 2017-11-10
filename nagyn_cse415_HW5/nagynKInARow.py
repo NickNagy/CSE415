@@ -59,7 +59,10 @@ def prepare(initial_state, k, what_side_I_play, opponent_nickname):
 # introduces the agent and the creator
 def introduce():
     return """Greetings, I am """ + nickname() + """. I am an agent 
-    designed by Nick Nagy (nagyn@uw.edu) to play games of K-in-a-Row."""
+    designed by Nick Nagy (nagyn@uw.edu) to play games of K-in-a-Row.
+    If I come off at all condescending, it's because I already know 
+    I'm better than you.
+    """
 
 
 # return's the agent's nickname
@@ -67,7 +70,9 @@ def nickname():
     return "Nuzzle"
 
 
-# should have a personality
+# runs minimax search on currentState with iterative deepening 
+# within the given timeLimit
+# returns [[index of next placement, next state chosen], remark]
 def makeMove(currentState, currentRemark, timeLimit=10000):
     alpha = -math.inf
     beta = math.inf
@@ -88,7 +93,7 @@ def makeMove(currentState, currentRemark, timeLimit=10000):
         root_successors = next_root_successors
         num_plies += 1
     best_state = root_successors[0]
-    return [best_state[1], best_state[0]], remarks(currentRemark)
+    return [best_state[1], best_state[0]], remarks(currentRemark, best_state[0])
 
 
 # returns a mathematical evaluation of all rows, columns, and diagonals in a state
@@ -271,8 +276,13 @@ def zobrist_hash(state):
     return val
 
 
-# returns a remark
-def remarks(currentRemark):
+# returns a remark to the opponent
+def remarks(currentRemark, state):
+    # beginning of the game
     if currentRemark == "The game is starting.":
-        return "Well, I guess I'll start things off!"
-    return "Well played, " + opponent_name + "... but check THIS out."
+        return "Well, I guess I'll start things off! Won't make a difference who does!"
+    # likely loss
+    if staticEval(state) < 0:
+        return "Hm... looks like you're getting lucky, " + opponent_name 
+                + "... obviously this won't happen again, so enjoy."
+    return "Cute, " + opponent_name + "... but check THIS out."
