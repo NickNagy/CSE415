@@ -1,5 +1,6 @@
 """ nagynKInARow.py
 
+Nick Nagy
 CSE 415 Assignment 5: K-in-a-Row
 
 Use this class as an agent in K-in-a-row
